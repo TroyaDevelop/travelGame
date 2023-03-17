@@ -5,11 +5,17 @@
 
 .wrapper {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.actions__wrapper {
+  display: flex;
   justify-content: center;
 }
 
 .header {
-  display: flex;
+  display: none;
   justify-content: center;
 }
 
