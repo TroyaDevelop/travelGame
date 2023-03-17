@@ -45,59 +45,28 @@ const map = {
         this.currentRoom = this.rooms[1];
     },
 
-    methodsInit(){
-        document.querySelector(".north").addEventListener("click", event => {
-            if(this.currentRoom.hasOwnProperty('north')){
-                let nextRoom = this.currentRoom.north;
-                if(nextRoom.locked == false){
-                    this.currentRoom = this.currentRoom.north;
-                this.renderRoom();
+    methodsInit() {
+        const directions = ["north", "east", "south", "west"];
+        directions.forEach(direction => {
+            const button = document.querySelector(`.${direction}`);
+            button.addEventListener("click", () => {
+                if (this.currentRoom.hasOwnProperty(direction)) {
+                    const nextRoom = this.currentRoom[direction];
+                    if (!nextRoom.locked) {
+                        this.moveToRoom(nextRoom);
+                    } else {
+                        alert("Заперто!");
+                    }
                 } else {
-                    alert("Заперто!");
-                };
-            } else {
-                alert("Тупик!");
-            };
+                    alert("Тупик!");
+                }
+            });
         });
-        document.querySelector(".east").addEventListener("click", event => {
-            if(this.currentRoom.hasOwnProperty('east')){
-                let nextRoom = this.currentRoom.east;
-                if(nextRoom.locked == false){
-                    this.currentRoom = this.currentRoom.east;
-                this.renderRoom();
-                } else {
-                    alert("Заперто!");
-                };
-            } else {
-                alert("Тупик!");
-            };
-        });
-        document.querySelector(".south").addEventListener("click", event => {
-            if(this.currentRoom.hasOwnProperty('south')){
-                let nextRoom = this.currentRoom.south;
-                if(nextRoom.locked == false){
-                    this.currentRoom = this.currentRoom.south;
-                this.renderRoom();
-                } else {
-                    alert("Заперто!");
-                };
-            } else {
-                alert("Тупик!");
-            };
-        });
-        document.querySelector(".west").addEventListener("click", event => {
-            if(this.currentRoom.hasOwnProperty('west')){
-                let nextRoom = this.currentRoom.west;
-                if(nextRoom.locked == false){
-                    this.currentRoom = this.currentRoom.west;
-                this.renderRoom();
-                } else {
-                    alert("Заперто!");
-                };
-            } else {
-                alert("Тупик!");
-            };
-        });
+    },
+
+    moveToRoom(nextRoom) {
+        this.currentRoom = nextRoom;
+        this.renderRoom();
     },
 
     roomsInit(){
