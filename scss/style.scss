@@ -1,30 +1,4 @@
-.container{
-    max-width: 1138px;
-    margin: 0 auto;
-}
-
-.wrapper{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.actions__wrapper{
-    display: flex;
-    justify-content: center;
-}
-
-.header{
-    display: none; //Поменять на flex
-    justify-content: center;
-}
-
-.room {
-    width: 50%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border: 1px solid black;
-}
+@import "./general";
+@import "./variables";
+@import "./mixins";
+@import "./blocks/map";
